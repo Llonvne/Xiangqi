@@ -3,11 +3,11 @@ package board
 import org.junit.jupiter.api.Test
 import pieces.PieceType
 
-class BoardPieceMapTest {
+class BoardTest {
 
     @Test
     fun toBoardCode() {
-        val map = BoardPieceMap()
+        val map = Board()
         // 添加车
         map.addPiece(PieceType.Chariot, 0, 0, 0)
         map.addPiece(PieceType.Chariot, 0, 0, 8)
@@ -48,6 +48,6 @@ class BoardPieceMapTest {
         map.addPiece(PieceType.Cannon, 1, 7, 1)
         map.addPiece(PieceType.Cannon, 1, 7, 7)
 
-        BoardPieceMap(BoardPieceMap.standardCode,true).printBoard()
+        println(map.getBase64EncodeBoardCode())
     }
 }

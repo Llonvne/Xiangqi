@@ -1,9 +1,9 @@
 package pieces
 
+import board.Point
+
 sealed interface PiecePrototypeInterface {
     fun getPieceType(): PieceType
-
-    fun getMovingStrategy(): MovingStrategy
 
     fun getPieceCode(): Char {
         return typeToCode(this.getPieceType())
@@ -12,4 +12,6 @@ sealed interface PiecePrototypeInterface {
     fun getPieceChinese(): String {
         return typeToChinese(this.getPieceType())
     }
+
+    fun getAvailablePoint(piece: Piece, point: Point, board: Map<Point, Piece>): Set<Point>
 }

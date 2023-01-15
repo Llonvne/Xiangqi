@@ -7,7 +7,7 @@ class Piece(val pType: PieceType, val pColor: PieceColor) {
     }
 
     companion object {
-        val typeAndColorSpliterator = "#"
+        const val typeAndColorSpliterator = "#"
         fun fromPieceCode(code: String): Piece {
             val typeAndColor = code.split(typeAndColorSpliterator)
             val type = codeToType(typeAndColor[0][0])
