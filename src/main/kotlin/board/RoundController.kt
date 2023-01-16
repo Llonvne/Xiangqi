@@ -1,10 +1,10 @@
 package board
 
-import Code.fromLightCode
-import Code.toLightCode
+import Code.FromLightCode
+import Code.ToLightCode
 import pieces.PieceColor
 
-class RoundController(var index: Int) : toLightCode<RoundController> {
+class RoundController(var index: Int) : ToLightCode<RoundController> {
 
     constructor(color: PieceColor) : this(color.ordinal)
 
@@ -21,7 +21,7 @@ class RoundController(var index: Int) : toLightCode<RoundController> {
         return index.toString()
     }
 
-    companion object : fromLightCode<RoundController> {
+    companion object : FromLightCode<RoundController> {
         override fun fromLightCode(code: String): RoundController {
             return RoundController(code.toInt())
         }

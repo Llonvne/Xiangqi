@@ -2,9 +2,18 @@ package board
 
 import pieces.*
 
-class Board(val pieceMap: MutableMap<Point, Piece>, val roundController: RoundController) {
+class Board(val pieceMap: MutableMap<Point, Piece>, val roundController: RoundController) : AbstractBoard {
 
-    fun isValidMovement(movement: Movement): Boolean {
+    override fun getGameStatus(): GameStatus {
+        // TODO
+        return GameStatus.Running
+    }
+
+    override fun pieceMap(): Map<Point, Piece> {
+        return this.pieceMap
+    }
+
+    override fun isValidMovement(movement: Movement): Boolean {
         // 检查 from 位置是否有棋子,如果没有就是不合法的
         val fromPiece = this.pieceMap[movement.from] ?: return false
         // 检查 to 位置是否是否有棋子，如果有先检查颜色，颜色相同，一定不合理，否则检查能否到达
@@ -16,7 +25,7 @@ class Board(val pieceMap: MutableMap<Point, Piece>, val roundController: RoundCo
         return movement.to in getAvailablePoint(fromPiece, movement.from)
     }
 
-    fun applyMovement(movement: Movement) {
+    override fun applyMovement(movement: Movement) {
         val piece = this.pieceMap[movement.from] ?: throw Exception("正在尝试应用一个不合法的 Movement...")
         this.pieceMap.remove(movement.from)
         this.pieceMap[movement.to] = piece
@@ -24,7 +33,7 @@ class Board(val pieceMap: MutableMap<Point, Piece>, val roundController: RoundCo
         roundController.next()
     }
 
-    private fun getAvailablePoint(piece: Piece, point: Point): Set<Point> {
+    override fun getAvailablePoint(piece: Piece, point: Point): Set<Point> {
         val prototype = typeToProto(piece.pType)
         return prototype.getAvailablePoint(piece, point, pieceMap)
     }
