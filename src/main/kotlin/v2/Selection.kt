@@ -1,4 +1,4 @@
-package v1
+package v2
 
 class SelectionGroup(val selections: MutableList<Selection> = mutableListOf()) : Iterable<Selection> {
 

@@ -1,0 +1,6 @@
+{
+    "basePath": "./config/",
+    "standard": "./config/standard.json",
+    "IgnoredMoveRules": true,
+    "savePath": "./saves/"
+}

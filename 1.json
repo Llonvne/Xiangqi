@@ -1,0 +1,293 @@
+{
+    "pieces": [
+        {
+            "type": "Chariot",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 0
+            },
+            "typeCode": "C"
+        },
+        {
+            "type": "Chariot",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 8
+            },
+            "typeCode": "C"
+        },
+        {
+            "type": "Chariot",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 0
+            },
+            "typeCode": "C"
+        },
+        {
+            "type": "Chariot",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 8
+            },
+            "typeCode": "C"
+        },
+        {
+            "type": "Horse",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 1
+            },
+            "typeCode": "H"
+        },
+        {
+            "type": "Horse",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 7
+            },
+            "typeCode": "H"
+        },
+        {
+            "type": "Horse",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 1
+            },
+            "typeCode": "H"
+        },
+        {
+            "type": "Horse",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 7
+            },
+            "typeCode": "H"
+        },
+        {
+            "type": "Elephant",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 2
+            },
+            "typeCode": "E"
+        },
+        {
+            "type": "Elephant",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 6
+            },
+            "typeCode": "E"
+        },
+        {
+            "type": "Elephant",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 2
+            },
+            "typeCode": "E"
+        },
+        {
+            "type": "Elephant",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 6
+            },
+            "typeCode": "E"
+        },
+        {
+            "type": "Advisor",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 3
+            },
+            "typeCode": "A"
+        },
+        {
+            "type": "Advisor",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 5
+            },
+            "typeCode": "A"
+        },
+        {
+            "type": "Advisor",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 3
+            },
+            "typeCode": "A"
+        },
+        {
+            "type": "Advisor",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 5
+            },
+            "typeCode": "A"
+        },
+        {
+            "type": "General",
+            "color": "Red",
+            "point": {
+                "x": 0,
+                "y": 4
+            },
+            "typeCode": "G"
+        },
+        {
+            "type": "General",
+            "color": "Black",
+            "point": {
+                "x": 9,
+                "y": 4
+            },
+            "typeCode": "G"
+        },
+        {
+            "type": "Cannon",
+            "color": "Red",
+            "point": {
+                "x": 2,
+                "y": 1
+            },
+            "typeCode": "N"
+        },
+        {
+            "type": "Cannon",
+            "color": "Red",
+            "point": {
+                "x": 2,
+                "y": 7
+            },
+            "typeCode": "N"
+        },
+        {
+            "type": "Cannon",
+            "color": "Black",
+            "point": {
+                "x": 7,
+                "y": 1
+            },
+            "typeCode": "N"
+        },
+        {
+            "type": "Cannon",
+            "color": "Black",
+            "point": {
+                "x": 7,
+                "y": 7
+            },
+            "typeCode": "N"
+        },
+        {
+            "type": "Soldier",
+            "color": "Red",
+            "point": {
+                "x": 3,
+                "y": 0
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Black",
+            "point": {
+                "x": 6,
+                "y": 0
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Red",
+            "point": {
+                "x": 3,
+                "y": 2
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Black",
+            "point": {
+                "x": 6,
+                "y": 2
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Red",
+            "point": {
+                "x": 3,
+                "y": 4
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Black",
+            "point": {
+                "x": 6,
+                "y": 4
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Red",
+            "point": {
+                "x": 3,
+                "y": 6
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Black",
+            "point": {
+                "x": 6,
+                "y": 6
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Red",
+            "point": {
+                "x": 3,
+                "y": 8
+            },
+            "typeCode": "S"
+        },
+        {
+            "type": "Soldier",
+            "color": "Black",
+            "point": {
+                "x": 6,
+                "y": 8
+            },
+            "typeCode": "S"
+        }
+    ],
+    "ignoreMovementRules": true
+}

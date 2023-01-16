@@ -4,50 +4,21 @@ import kotlinx.serialization.Serializable
 
 /**
  * This is the definition of a chess piece
- * It contains the type code of the pawn, the color code of the pawn, and its coordinates
- * The purpose of using type codes and color codes is to make it easier to interact with JSON,
- * but in the actual coding process we want to use enumerated types for more security,
- * so we also provide methods to get the corresponding color enumerated classes and type enumerated classes
- *
- * We are trying to move to Kotlin's native serialization approach instead of using FastJson
- * to solve many of the difficulties of dealing with conversion literals.
+ * It contains the type of the piece, the color of the piece, and its coordinates
+ * It contains a serialization notation
  */
 @Serializable
-data class Piece(val typeCode: Int, val colorIndex: Int, var x: Int, var y: Int) {
-    /**
-     * You may have noticed that we are storing Int values for Char
-     * because we found that the FastJson library would not parse private Char variables properly,
-     * so we converted them to Int, but we still provide a constructor for Char via the helper constructor
-     * You can ignore the internal implementation and use the Char constructor as you wish
-     */
-    constructor(code: Char, color: Int, x: Int, y: Int) : this(code.code, color, x, y) {}
+data class Piece(val type: PieceType, val color: PieceColor, var point: Point) {
+    constructor(type: PieceType, colorIndex: Int, x: Int, y: Int) : this(type, PieceColor.values()[colorIndex], x, y)
 
-    /**
-     * We found that we could not provide a type-based constructor in the constructor,
-     * and once we did, FastJson would not store the TypeCode in the Json properly,
-     * we guessed that FastJson did not handle enumerated types and shaping properly,
-     * so we used the wrong constructor, but we still might need a type-based constructor.
-     * so we moved it to the companion object
-     */
-    constructor(type: PieceType, color: Int, x: Int, y: Int) : this(typeToCode(type), color, x, y)
+    constructor(type: PieceType, color: PieceColor, x: Int, y: Int) : this(type, color, Point(x, y))
 
-    fun GetPieceType(): PieceType {
-        return _PieceCodeToTypeMap.getValue(typeCode.toChar())
-    }
+    val typeCode = _TypeToCodeMap.getValue(type)
 
-    fun getColor(): PieceColor {
-        return PieceColor.values()[colorIndex]
-    }
+}
 
-    companion object {
-        fun typeToCode(type: PieceType): Char {
-            return _TypeToCodeMap.getValue(type)
-        }
-
-        fun colorToIndex(color: PieceColor): Int {
-            return color.ordinal
-        }
-    }
+@Serializable
+data class Point(var x: Int, var y: Int) {
 
 }
 
@@ -65,7 +36,7 @@ enum class PieceType {
     Soldier;
 }
 
-private val PieceChineseNameMap = mapOf(
+private val _PieceChineseNameMap = mapOf(
     PieceType.General to "将",
     PieceType.Advisor to "士",
     PieceType.Elephant to "象",

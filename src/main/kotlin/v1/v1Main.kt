@@ -1,9 +1,6 @@
-import v1.Selection
-import v1.SelectionGroup
-import v1.Xiangqi
-import v1.standardCode
+package v1
 
-fun main(args: Array<String>) {
+fun v1main(args: Array<String>) {
     println("Welcome to the v1.Xiangqi game")
     println("Please select one of the following options to start the game or exit")
     mainSelectionGroup.run()
