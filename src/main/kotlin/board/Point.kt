@@ -1,18 +1,18 @@
 package board
 
-data class Point(var x: Int, var y: Int) {
+import Code.delimiterMap
+import Code.fromLightCode
+import Code.toLightCode
 
-    constructor(pointCode: String) : this(0, 0) {
-        val xAndYStrings = pointCode.split(xAndYSpliterator)
-        this.x = xAndYStrings[0].toInt()
-        this.y = xAndYStrings[1].toInt()
+data class Point(var x: Int, var y: Int) : toLightCode<Point> {
+    override fun toLightCode(): String {
+        return listOf(x, y).joinToString(delimiterMap.getValue("Point"))
     }
 
-    override fun toString(): String {
-        return "$x$xAndYSpliterator$y"
-    }
-
-    companion object {
-        const val xAndYSpliterator = ','
+    companion object : fromLightCode<Point> {
+        override fun fromLightCode(code: String): Point {
+            val nums = code.split(delimiterMap.getValue("Point")).map { it.toInt() }
+            return Point(nums[0], nums[1])
+        }
     }
 }

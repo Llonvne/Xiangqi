@@ -1,18 +1,22 @@
 package pieces
 
-class Piece(val pType: PieceType, val pColor: PieceColor) {
+import Code.delimiterMap
+import Code.fromLightCode
+import Code.toLightCode
 
-    override fun toString(): String {
-        return "${typeToCode(pType)}$typeAndColorSpliterator$pColor"
+class Piece(val pType: PieceType, val pColor: PieceColor) : toLightCode<PieceColor> {
+    constructor(type: Int, color: Int) : this(
+        PieceType.values()[type], PieceColor.values()[color]
+    )
+
+    override fun toLightCode(): String {
+        return pType.ordinal.toString() + delimiterMap.getValue("Piece") + pColor.ordinal.toString()
     }
 
-    companion object {
-        const val typeAndColorSpliterator = "#"
-        fun fromPieceCode(code: String): Piece {
-            val typeAndColor = code.split(typeAndColorSpliterator)
-            val type = codeToType(typeAndColor[0][0])
-            val color = PieceColor.valueOf(typeAndColor[1])
-            return Piece(type, color)
+    companion object : fromLightCode<Piece> {
+        override fun fromLightCode(code: String): Piece {
+            val nums = code.split(delimiterMap.getValue("Piece")).map { it.toInt() }
+            return Piece(nums[0], nums[1])
         }
     }
 }

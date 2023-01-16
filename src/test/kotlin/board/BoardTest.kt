@@ -1,13 +1,16 @@
 package board
 
+import Code.decode
+import Code.encode
 import org.junit.jupiter.api.Test
+import pieces.PieceColor
 import pieces.PieceType
 
 class BoardTest {
 
     @Test
     fun toBoardCode() {
-        val map = Board()
+        val map = Board(mutableMapOf(), RoundController(PieceColor.Red.ordinal))
         // 添加车
         map.addPiece(PieceType.Chariot, 0, 0, 0)
         map.addPiece(PieceType.Chariot, 0, 0, 8)
@@ -48,6 +51,15 @@ class BoardTest {
         map.addPiece(PieceType.Cannon, 1, 7, 1)
         map.addPiece(PieceType.Cannon, 1, 7, 7)
 
-        println(map.getBase64EncodeBoardCode())
+        val x = encode(map)
+        println(x)
+        val map2 = decode(x)
+        println("hello")
+    }
+
+    @Test
+    fun test_json() {
+        println(
+        )
     }
 }
