@@ -1,5 +1,7 @@
 package v2.type
 
+import kotlinx.serialization.Serializable
+
 /**
  * This is the definition of a chess piece
  * It contains the type code of the pawn, the color code of the pawn, and its coordinates
@@ -10,6 +12,7 @@ package v2.type
  * We are trying to move to Kotlin's native serialization approach instead of using FastJson
  * to solve many of the difficulties of dealing with conversion literals.
  */
+@Serializable
 data class Piece(val typeCode: Int, val colorIndex: Int, var x: Int, var y: Int) {
     /**
      * You may have noticed that we are storing Int values for Char
@@ -26,7 +29,7 @@ data class Piece(val typeCode: Int, val colorIndex: Int, var x: Int, var y: Int)
      * so we used the wrong constructor, but we still might need a type-based constructor.
      * so we moved it to the companion object
      */
-//    constructor(type: PieceType, color: Int, x: Int, y: Int) : this(typeToCode(type), color, x, y)
+    constructor(type: PieceType, color: Int, x: Int, y: Int) : this(typeToCode(type), color, x, y)
 
     fun GetPieceType(): PieceType {
         return _PieceCodeToTypeMap.getValue(typeCode.toChar())

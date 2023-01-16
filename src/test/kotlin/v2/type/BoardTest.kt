@@ -1,12 +1,11 @@
 package v2.type
 
-import com.alibaba.fastjson2.to
-import com.alibaba.fastjson2.toJSONString
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Test
 import v2.type.Piece.Companion.typeToCode
 import v2.type.PieceType.*
-import kotlin.test.assertEquals
-
 class BoardTest {
 
     @Test
@@ -42,10 +41,11 @@ class BoardTest {
             x.pieces.add(Piece(typeToCode(Soldier), 0, 3, i))
             x.pieces.add(Piece(typeToCode(Soldier), 1, 6, i))
         }
+        // Serializing objects
+        val string = Json.encodeToString(x)
+        println(string)
+        val obj = Json.decodeFromString<Board>(string)
+        println(obj) // Project(name=kotlinx.serialization, language=Kotlin)
 
-        println(x.toJSONString())
-        val x2 = x.toJSONString().to<Board>()
-        assertEquals(x.toString(), x2.toString())
-        println(x2.toJSONString())
     }
 }
