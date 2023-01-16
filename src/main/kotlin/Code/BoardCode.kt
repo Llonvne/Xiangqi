@@ -4,7 +4,6 @@ import board.Board
 import board.Point
 import board.RoundController
 import pieces.Piece
-import java.util.*
 
 /**
  * This is the BoardCode file, which converts a Board object into a LightCode,
@@ -20,12 +19,11 @@ fun encode(board: Board): String {
         tmp += point.toLightCode() + getDelimiter("BetweenPointAndPiece") + piece.toLightCode() + getDelimiter("BetweenPieces")
     }
     code += tmp.substring(0..tmp.length - 2)
-    return String(Base64.getEncoder().encode(code.toByteArray()));
+    return code
 }
 
 fun decode(initialCode: String): Board {
-    val dcode = String(Base64.getDecoder().decode(initialCode))
-    val code = dcode.split(getDelimiter("BetweenRoundAndPieces"))
+    val code = initialCode.split(getDelimiter("BetweenRoundAndPieces"))
     val round = RoundController.fromLightCode(code[0])
     val pieces = code[1].split(getDelimiter("BetweenPieces"))
     val map = mutableMapOf<Point, Piece>()

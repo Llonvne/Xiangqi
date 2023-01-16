@@ -11,31 +11,35 @@ class BoardRecorder(val board: Board) : AbstractBoard by board {
 
     var initialBoardCode = encode(board)
 
-    var history = mutableListOf<History>()
+    var history = mutableListOf<Movement>()
 
     override fun applyMovement(movement: Movement) {
         board.applyMovement(movement)
-        history.add(History(movement, encode(board)))
+        history.add(movement)
     }
 
     fun toFile(filename: String) {
-        val f = File("${filename}_${Date().time}_record.txt")
+        val f = File(filename)
         f.createNewFile()
-        f.printWriter().use {
-            it.println(initialBoardCode)
-            it.println(history.toJSONString())
+        Base64.getEncoder().wrap(f.outputStream()).bufferedWriter().use {
+            it.write(initialBoardCode)
+            it.newLine()
+            it.write(encode(board))
+            it.newLine()
+            it.write(history.toJSONString())
         }
     }
 
     companion object {
-        data class History(val movement: Movement, val code: String)
 
         fun fromFile(filename: String): BoardRecorder {
             val f = File(filename)
-            f.bufferedReader().use {
+
+            Base64.getDecoder().wrap(f.inputStream()).bufferedReader().use {
                 val initialCode = it.readLine()
-                val list = it.readText().into<MutableList<History>>()
-                val board = decode(list.last().code)
+                val now = it.readLine()
+                val list = it.readText().into<MutableList<Movement>>()
+                val board = decode(now)
                 val recorder = BoardRecorder(board)
                 recorder.initialBoardCode = initialCode
                 recorder.history = list

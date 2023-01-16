@@ -9,6 +9,10 @@ interface AbstractBoard {
 
     fun applyMovement(movement: Movement)
 
+    fun reverseMovement(movement: Movement) {
+        this.applyMovement(Movement(movement.to, movement.from, movement.normal))
+    }
+
     fun getAvailablePoint(piece: Piece, point: Point): Set<Point>
 
     fun pieceMap(): Map<Point, Piece>
