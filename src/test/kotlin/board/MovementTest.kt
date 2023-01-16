@@ -1,6 +1,8 @@
 package board
 
 import org.junit.jupiter.api.Test
+import v1.board.Movement
+import v1.board.Point
 import kotlin.test.assertEquals
 
 class MovementTest {
@@ -12,6 +14,6 @@ class MovementTest {
 
     @Test
     fun fromLightCode() {
-        assertEquals(Movement.fromLightCode("1#0#2#0#0"),Movement(Point(1, 0), Point(2, 0), 0))
+        assertEquals(Movement.fromLightCode("1#0#2#0#0"), Movement(Point(1, 0), Point(2, 0), 0))
     }
 }

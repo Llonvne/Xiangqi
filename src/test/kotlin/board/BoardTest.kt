@@ -1,10 +1,12 @@
 package board
 
-import Code.decode
-import Code.encode
 import org.junit.jupiter.api.Test
-import pieces.PieceColor
-import pieces.PieceType
+import v1.Code.decode
+import v1.Code.encode
+import v1.board.Board
+import v1.board.RoundController
+import v1.pieces.PieceColor
+import v1.pieces.PieceType
 
 class BoardTest {
 
