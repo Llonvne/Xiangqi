@@ -17,6 +17,10 @@ class Config() {
     val IgnoredMoveRules: Boolean = true
     val savePath: String = "./saves/"
 
+    val standardJson: String by lazy {
+        File(Xiangqi2.config.standard).readText()
+    }
+
     fun writeToConfig() {
         File(configJsonPath).writeText(
             prettyJson.encodeToString(this)

@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 val mainSelectionGroup = SelectionGroup(
     mutableListOf(
         Selection("Start a standard Chinese chess game") {
-            val x =Board.decode(Xiangqi2.standardBegin)
+            val x =Board.decode(Xiangqi2.config.standardJson)
             x.CLIboard()
         },
         Selection("Start the game from a specific position (requires a game code)") {

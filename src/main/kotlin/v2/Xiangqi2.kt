@@ -8,10 +8,6 @@ class Xiangqi2 {
     companion object {
         private var json = Json { prettyPrint = true;encodeDefaults = true }
 
-        val standardBegin: String by lazy {
-            File(config.standard).readText()
-        }
-
         val config: Config
             get() {
                 while (true) {
